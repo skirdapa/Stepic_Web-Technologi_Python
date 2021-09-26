@@ -1,0 +1,36 @@
+{% macro post_email(email, message, title="Без темы") %}
+    {% if '@' not in email %}
+        E-mail '{{email}}' некорректный
+    {% else %}
+        Сообщение '{{message}}' для адресата '{{email}}' отправлено с темой '{{title}}'
+    {% endif %}
+{% endmacro %}
+
+<!--
+Задание: переменный вывод
+Пишем шаблон: добавьте макрос с именем get_solution; вызов для него уже прописан.
+Макрос принимает переменное количество переменных в виде списка и множественные аргументы в виде словаря.
+
+При помощи фильтра sum необходимо посчитать сумму значений списка. Если в словаре находится ключ с таким числом,
+нужно вывести значение по этому ключу. После этого список удаляет последний элемент и повторяет действия снова.
+
+Для решения задачи можно воспользоваться циклом или рекурсией.
+Еще вам может пригодиться фильтр length, фильтр int и  фильтр string.
+
+Sample Input:
+varargs=[1, 10, 100, 1000, 10000,], kwargs={'11111': 'm', '10': 'o', '1': 'r', '111': 'i', '666': 'e',}
+
+Sample Output:
+mir
+-->
+{% macro get_solution(varargs, kwargs) %}
+    <br>{{varargs}}, {{kwargs}}
+    {% for i in range(varargs | length) %}
+        {% for key, value in kwargs.items() %}
+                 <br>список: {{ varargs[:varargs | length - i] }}, сумма: {{varargs[:varargs | length - i] | sum}} ключ: {{ key }}
+            {% if varargs[:varargs | length - i] | sum == key | int %}
+                {{value}}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+{% endmacro %}
