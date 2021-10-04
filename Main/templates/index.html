@@ -1,51 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Home page</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    </head>
-    <body>
-        <p>Привет, Flask and World!</p>
-        {% include '_menu.html' %}
-        <img
-                src = "{{ url_for('static', filename='img/hello-world.png') }}"
-                alt = "Picture Hello World"
-                width = "400"
-                height="300"
-        >
+{% extends 'base.html'%}
 
-        <p> {{ a }} {{ operator }} {{ c }}
-            {% if c == 0.0 and operator == ":" %}
-                Ошибка
-            {% elif operator not in ['+','-','*',':'] %}
-                Ошибка
-            {% elif operator == "+" %}
-                {{ a + c }}
-            {% elif operator == "-" %}
-                {{ a - c }}
-            {% elif operator == "*" %}
-                {{ a * c }}
-            {% elif operator == ":" %}
-                {{ a / c }}
-            {% endif %}
-        </p>
-        <p>
-            {{[1,2.0,"3.0","sdasd"] | random() }}
-        </p>
-        <p>Пример циклов в шаблоне
-            {% for i in "Привет" %}
-                <li> {{loop.index}} - {{i}} </li>
-            {% else %}
-                Численная последовательность не существует
-            {% endfor %}
-        </p>
-    </body>
-    {% import "macros.html" as macros %}
-    {{ macros.post_email("1@1.ru","test message") }}
-    {{ macros.get_solution(varargs=[1, 10, 100, 1000, 10000,],
-    kwargs={'11111': 'm', '10': 'o', '1': 'r', '111': 'i', '666': 'e'}) }}
-    <script>
-        <!-- alert('WoW') -->
-    </script>
-</html>
+<!--С помощью конструкции супер, частично перезаписываем блок из базового шаблона -->
+{% block menu %}
+    {{ super() }}
+    <a href="#">Contact</a>
+{% endblock %}
+
+
+<!-- Перезаписываем блок из базового шаблона полностью -->
+{% block content %}
+    <h1>Home Page</h1>
+    <p>Hello, Jinja!</p>
+    <hr>
+{% endblock %}
