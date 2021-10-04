@@ -7,6 +7,7 @@
     </head>
     <body>
         <p>Привет, Flask and World!</p>
+        {% include '_menu.html' %}
         <img
                 src = "{{ url_for('static', filename='img/hello-world.png') }}"
                 alt = "Picture Hello World"

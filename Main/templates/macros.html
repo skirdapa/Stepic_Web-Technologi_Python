@@ -24,10 +24,10 @@ Sample Output:
 mir
 -->
 {% macro get_solution(varargs, kwargs) %}
-    <br>{{varargs}}, {{kwargs}}
+    <br> <!-- {{varargs}}, {{kwargs}} -->
     {% for i in range(varargs | length) %}
         {% for key, value in kwargs.items() %}
-                 <br>список: {{ varargs[:varargs | length - i] }}, сумма: {{varargs[:varargs | length - i] | sum}} ключ: {{ key }}
+                 <!-- <br>список: {{ varargs[:varargs | length - i] }}, сумма: {{varargs[:varargs | length - i] | sum}} ключ: {{ key }} -->
             {% if varargs[:varargs | length - i] | sum == key | int %}
                 {{value}}
             {% endif %}
