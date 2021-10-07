@@ -4,6 +4,7 @@
 {% block menu %}
     {{ super() }}
     <a href="#">Contact</a>
+    <a href="/news">News</a>
 {% endblock %}
 
 
@@ -12,4 +13,13 @@
     <h1>Home Page</h1>
     <p>Hello, Jinja!</p>
     <hr>
+    <form action="" method="post">
+        <p>
+            <label for="message">{{ message }}</label><br>
+            <input type="text" name="message">
+        </p>
+        <p>
+            <input type="submit">
+        </p>
+    </form>
 {% endblock %}

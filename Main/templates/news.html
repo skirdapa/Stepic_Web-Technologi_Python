@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+
+{% block content %}
+    {{ news.items() }}
+    {% for title, content in news.items() %}
+    <p>
+        <h4>{{title}}</h4>
+        <label>{{content}}</label>
+    </p>
+    {% endfor %}
+    <form action="" method="post">
+        <p>
+            <label for="title">Заголовок новости</label><br>
+            <div>
+                <p><input type="text" name="title" id="title"></p>
+                <textarea name="content" cols="17" rows="3"></textarea>
+            </div>
+        </p>
+        <p>
+            <input type="submit" value="Опубликовать">
+            <input type="reset" value="Очистить">
+        </p>
+    </form>
+{% endblock %}
